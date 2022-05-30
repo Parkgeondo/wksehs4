@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,500,900i');
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --font-white: #fff;
+    --font-black: #171010;
+    --body-color: #ffffff;
+    --sky-blue:#c7f2f1;
+    --font-color:#082e2d;
+}
+
+/* js에서 사용할 애니메이션 */
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: var(--body-color);
+    font-family: "Rubik", Arial;
+}
+
+h1{line-height: 1.2;}
+p{line-height: 1.5;}
+
+/* 헤더 */
+header {
+    position: fixed;
+    background-color:var(--sky-blue);
+    z-index: 1;
+    width: 100%;
+    height: 64px;
+    transition: all 0.3s ease-in;
+    line-height: 64px;
+}
+
+header.scrolled {
+    background-color: #ffffff;
+    height: 80px;
+    line-height: 80px;
+    box-shadow:  0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+header div{
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    margin-left:auto;
+	margin-right:auto;
+    padding: 0px 64px 0px 64px;
+}
+
+header div > a {
+    flex: 1 0 0;
+    font-size: 24px;
+    font-weight: 900;
+    font-family: 'noto sans kr';
+    text-decoration: none;
+    font-style: italic;
+    color: var(--font-color);
+}
+header img {
+}
+
+header nav{
+    flex: 1 0 0;
+    justify-content: flex-start;
+    text-align: right;
+}
+
+header nav a{
+    text-decoration: none;
+    margin-left: 24px;
+    color: var(--font-color);
+    padding: 4px 12px;
+    border-radius: 50px;
+    transition: all 0.2s ;
+}
+
+header nav a:hover{
+    background-color: #86ccca5d;
+}
+
+section {
+    display: flex;
+    color:var(--font-color);
+}
+
+section:nth-child(even){
+    
+}
+section:nth-child(odd){
+    flex-direction: row-reverse;
+}
+/* hero */
+section:nth-child(1){
+    transform: translateY(64px);
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: var(--sky-blue);
+    align-items: center;
+    background-image: url(img/hero.jpg);
+    background-size:60vw;
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+    padding: 300px 60px 300px 60px;
+}
+
+section:nth-child(1) figcaption h1{
+    font-size: 62px;
+    font-weight: 500;
+}
+section:nth-child(1) figcaption p{
+    margin-top: 24px;
+    font-size: 20px;
+    font-weight: 300;
+}
+button{
+    border: none;
+    margin-top: 36px;
+    background-color: var(--font-color);
+    padding: 16px 30px;
+    font-size: 16px;
+    color: var(--font-white);
+    border-radius: 50px;
+}
+
+
+section.content{
+    padding: 120px;
+    gap: 64px;
+}
+section.content h1{
+    font-size: 36px;
+    font-weight: 500;
+}
+section.content p{
+    font-size: 20px;
+    margin-top: 30px;
+    font-weight: 300;
+}
+section.content img{
+    width: 56vw;
+}
+
+
+@media screen and (max-width: 1000px) { 
+    section:nth-child(2),
+    section:nth-child(3){
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    section.content img{
+        width: 64vw;
+    }
+    header img {
+        display: none;
+    }
+    header div > a {
+        flex: 0 0 0;
+    }
+    section:nth-child(1){
+        text-align: center;
+        background-image: none;
+    }
+}
