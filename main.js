@@ -1,34 +1,30 @@
-const header = document.querySelector("header")
+var eyeball = function (selector) {
+    var eye = document.querySelector(selector),
+    pupil = eye.querySelector('.pupil'),
+    eyearea = eye.getBoundingClientRect();
 
-document.addEventListener("scroll", function () {
-    const pixels = window.scrollY;
-
-    if (pixels >= header.getBoundingClientRect().height) {
-        header.classList.add("scrolled");
-    } else {
-        header.classList.remove("scrolled");
+    function eyeballmove(mouseX, mouseY) {
+        var radian = Math.atan2(event.clientY - (eyearea.y + eyearea.height * 0.5), mouseX - (eyearea.x + eyearea.width * 0.5));
+        pupil.style.transform = 'rotate(' + (180*radian/Math.PI - 90) + 'deg)';
+        console.log(event.clientY);
     }
-})
 
-const animatedTags = document.querySelectorAll("h1, p, figure, button")
-animatedTags.forEach(tag => {
-    tag.style.opacity = 0
-})
+    return {
+        eyeballmove: eyeballmove
+    };
 
-document.addEventListener("scroll", function () {
 
-    let delay = 0.25;
-    animatedTags.forEach(tag => {
-        const tagTop = tag.getBoundingClientRect().top;
-        const tagBottom = tag.getBoundingClientRect().bottom;
+}
 
-        if (tagTop < window.innerHeight && tagBottom > 0) {
-            tag.style.animation = `fadeIn 1s ${delay}s both`;
-            console.log("asd");
-            delay += 0.25;
-        } else {
-            tag.style.animation = "0";
-            console.log("asd");
-        }
-    })
-})
+var eye1 = eyeball('.eye1');
+var eye2 = eyeball('.eye2');
+
+window.addEventListener('mousemove', function (e) {
+    eye1.eyeballmove(e.pageX, e.pageY);
+    eye2.eyeballmove(e.pageX, e.pageY);
+
+});
+
+
+
+
